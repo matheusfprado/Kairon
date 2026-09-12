@@ -1,0 +1,5 @@
+Ambiente Kairon OK.
+[ELIFECYCLE] Command failed with exit code 1.
+C:\Users\mathe\projetos\projects\Kairon\apps\desktop:
+[ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL] @kairon/desktop@0.1.0 tauri: `tauri dev`
+Exit status 1

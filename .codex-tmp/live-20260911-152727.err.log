@@ -1,0 +1,24 @@
+$ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-env.ps1
+$ tauri dev
+     Running BeforeDevCommand (`pnpm dev:web`)
+$ vite --host 127.0.0.1 --port 1420
+X [ERROR] Cannot read directory "../../../../..": Acesso negado.
+
+X [ERROR] Could not resolve "C:\\Users\\mathe\\projetos\\projects\\Kairon\\apps\\desktop\\vite.config.js"
+
+failed to load config from C:\Users\mathe\projetos\projects\Kairon\apps\desktop\vite.config.js
+error when starting dev server:
+Error: Build failed with 2 errors:
+error: Cannot read directory "../../../../..": Acesso negado.
+error: Could not resolve "C:\\Users\\mathe\\projetos\\projects\\Kairon\\apps\\desktop\\vite.config.js"
+    at failureErrorWithLog (C:\Users\mathe\projetos\projects\Kairon\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:1752:15)
+    at C:\Users\mathe\projetos\projects\Kairon\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:1211:25
+    at runOnEndCallbacks (C:\Users\mathe\projetos\projects\Kairon\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:1592:45)
+    at buildResponseToResult (C:\Users\mathe\projetos\projects\Kairon\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:1209:7)
+    at C:\Users\mathe\projetos\projects\Kairon\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:1236:16
+    at responseCallbacks.<computed> (C:\Users\mathe\projetos\projects\Kairon\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:886:9)
+    at handleIncomingPacket (C:\Users\mathe\projetos\projects\Kairon\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:941:12)
+    at Socket.readFromStdout (C:\Users\mathe\projetos\projects\Kairon\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:864:7)
+    at Socket.emit (node:events:508:28)
+    at addChunk (node:internal/streams/readable:559:12)
+       Error The "beforeDevCommand" terminated with a non-zero status code.

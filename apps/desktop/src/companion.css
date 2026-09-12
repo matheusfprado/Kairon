@@ -1,0 +1,70 @@
+html, body, #root { background: transparent; color-scheme: light; }
+body { overflow: hidden; }
+.companion-widget {
+  --signal: #087b82;
+  --signal-soft: rgb(8 123 130 / 12%);
+  width: min(320px, 100vw);
+  height: min(560px, 100dvh);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 10px 10px;
+  color: #163e42;
+  background: transparent;
+}
+.companion-widget button, .companion-widget select, .companion-widget input { font: inherit; }
+.companion-widget button {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  min-width: 36px; min-height: 36px; border: 0; border-radius: 12px;
+  color: #185b62; background: #e7f5f3; cursor: pointer;
+}
+.companion-widget button:hover { background: #ceeae6; }
+.companion-widget button:disabled { opacity: .5; cursor: not-allowed; }
+.companion-widget :is(button, select, input, a, [tabindex]):focus-visible { outline: 2px solid #087b82; outline-offset: 2px; }
+.companion-widget svg { width: 16px; height: 16px; flex-shrink: 0; }
+.companion-toolbar {
+  display: flex; align-items: center; gap: 4px; width: 100%; flex-shrink: 0;
+  padding: 2px 5px; background: #f4faf9; border: 1px solid #c8dfdc; border-radius: 14px;
+}
+.companion-toolbar .companion-drag { background: transparent; cursor: grab; touch-action: none; user-select: none; font-size: 12px; font-weight: 600; }
+.companion-toolbar .companion-drag:active { cursor: grabbing; }
+.companion-status { margin-left: auto; font-size: 10px; color: #47696c; }
+.companion-widget .tamagotchi { flex-shrink: 0; width: 100%; height: 198px; padding: 8px 0 0; }
+.companion-widget .tamagotchi__body { width: 148px; padding: 0; background: transparent; cursor: grab; touch-action: none; user-select: none; filter: drop-shadow(0 5px 8px rgb(19 76 79 / 14%)); }
+.companion-widget .tamagotchi__body:hover { background: transparent; }
+.companion-widget .tamagotchi__body:active { cursor: grabbing; }
+.companion-widget .tamagotchi__halo, .companion-widget .tamagotchi__heart, .companion-widget .tamagotchi__name { display: none; }
+.companion-widget .tamagotchi__bubble {
+  width: 100%; min-height: 36px; max-height: 56px; margin: 0; padding: 8px 10px;
+  color: #21464a; background: #f4faf9; border-color: #c8dfdc; box-shadow: none;
+}
+.companion-widget .tamagotchi__bubble::after { display: none; }
+.companion-widget .tamagotchi__bubble p { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.companion-widget .tamagotchi__bubble { display: none; }
+.companion-voice-hint { margin: 6px 0 0; color: #47696c; font-size: 11px; text-align: center; }
+.companion-chat {
+  display: flex; flex-direction: column; gap: 6px; width: 100%; min-height: 0; flex: 1;
+  padding: 10px; border: 1px solid #c8dfdc; border-radius: 18px;
+  background: #f7fbfa; box-shadow: 0 4px 12px rgb(19 76 79 / 8%);
+}
+.companion-mode { display: flex; align-items: center; gap: 5px; }
+.companion-mode label, .companion-composer label { font-size: 11px; color: #43666a; }
+.companion-mode select { margin-left: auto; min-width: 0; max-width: 165px; min-height: 32px; padding: 4px; border: 1px solid #bbd5d1; border-radius: 8px; background: white; color: #21464a; font-size: 11px; }
+.companion-history { flex: 1; min-height: 35px; overflow-y: auto; overflow-wrap: anywhere; scrollbar-width: thin; scrollbar-color: #90b9b3 transparent; }
+.companion-empty { color: #486b6e; font-size: 12px; line-height: 1.5; }
+.companion-message { margin: 6px 0; padding: 7px 9px; border-radius: 12px; background: #e8f3f0; }
+.companion-message--user { background: #eaf0f7; }
+.companion-message--system { background: #ffedeb; }
+.companion-message strong { font-size: 10px; color: #47696c; }
+.companion-message p { margin: 3px 0 0; white-space: pre-wrap; font-size: 13px; line-height: 1.45; }
+.companion-message a, .companion-message small { display: block; color: #126b77; font-size: 11px; }
+.companion-error { flex-shrink: 0; max-height: 72px; overflow-y: auto; margin: 0; color: #9b2929; font-size: 12px; line-height: 1.35; }
+.companion-composer { flex-shrink: 0; }
+.companion-composer > div { display: flex; gap: 4px; margin-top: 3px; }
+.companion-composer input { min-width: 0; flex: 1; border: 1px solid #bbd5d1; border-radius: 10px; padding: 7px 9px; color: #163e42; background: white; font-size: 13px; }
+.companion-actions { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+.companion-actions button { font-size: 11px; }
+.companion-actions button:first-child { margin-right: auto; padding-inline: 9px; }
+.companion-actions button[aria-pressed="true"] { background: #ccebe5; }
+@media (max-height: 510px) { .companion-widget .tamagotchi { height: 155px; } .companion-widget .tamagotchi__body { width: 106px; } }
+@media (max-height: 380px) { .companion-widget .tamagotchi { display: none; } .companion-chat { margin-top: 6px; } }

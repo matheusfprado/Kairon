@@ -1,0 +1,10 @@
+Ambiente Kairon OK.
+
+  VITE v7.3.6  ready in 662 ms
+
+  ➜  Local:   http://127.0.0.1:1420/
+19:16:33 [vite] (client) hmr update /src/pages/HomePage.tsx, /src/styles.css
+C:\Users\mathe\projetos\projects\Kairon\apps\desktop:
+[ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL] @kairon/desktop@0.1.0 tauri: `tauri dev`
+Exit status 4294967295
+[ELIFECYCLE] Command failed with exit code 4294967295.

@@ -1,0 +1,43 @@
+[project]
+name = "kairon-core"
+version = "0.1.0"
+description = "Kairon local assistant core"
+requires-python = ">=3.12"
+dependencies = [
+  "av>=18.1,<19.0",
+  "ddgs>=9.14.4,<10.0",
+  "edge-tts>=7.2.8,<8.0",
+  "fastapi>=0.116.1",
+  "faster-whisper>=1.2.1,<2.0",
+  "httpx>=0.28.1,<1.0",
+  "numpy>=2.0,<3.0",
+  "pydantic>=2.11.7",
+  "pydantic-settings>=2.10.1",
+  "pypdf>=6.0,<7.0",
+  "sounddevice>=0.5.5,<1.0",
+  "uvicorn[standard]>=0.35.0",
+  "webrtcvad-wheels>=2.0.14,<3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.4.1",
+  "pytest-asyncio>=1.1.0",
+  "ruff>=0.12.8",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[build-system]
+requires = ["setuptools>=80.0.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["core*"]
+exclude = ["apps*", "data*", "models*", "node_modules*", "tests*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

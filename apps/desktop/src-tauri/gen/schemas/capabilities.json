@@ -1,0 +1,1 @@
+{"main-window":{"identifier":"main-window","description":"Allow moving and closing the companion window.","local":true,"windows":["main"],"permissions":["core:default","core:window:allow-start-dragging","core:window:allow-set-position","core:window:allow-close","opener:default"]}}

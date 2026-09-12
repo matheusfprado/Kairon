@@ -1,0 +1,23 @@
+Ambiente Kairon OK.
+
+  VITE v7.3.6  ready in 1044 ms
+
+  ➜  Local:   http://127.0.0.1:1420/
+15:47:36 [vite] (client) hmr update /src/styles.css, /src/pages/HomePage.tsx
+15:47:36 [vite] (client) hmr update /src/styles.css, /src/pages/HomePage.tsx
+15:47:36 [vite] (client) hmr update /src/styles.css
+15:47:36 [vite] (client) hmr update /src/styles.css, /src/pages/HomePage.tsx
+15:47:36 [vite] (client) hmr update /src/styles.css, /src/pages/HomePage.tsx
+15:48:32 [vite] (client) hmr update /src/App.tsx, /src/styles.css
+15:48:32 [vite] (client) hmr update /src/styles.css, /src/components/TamagotchiCompanion.tsx
+15:48:44 [vite] (client) ✨ new dependencies optimized: @tauri-apps/api/core, @tauri-apps/api/dpi, @tauri-apps/api/window
+15:48:44 [vite] (client) ✨ optimized dependencies changed. reloading
+15:49:19 [vite] (client) hmr update /src/pages/CompanionPage.tsx, /src/styles.css
+15:49:19 [vite] (client) hmr update /src/styles.css
+15:49:19 [vite] (client) page reload src/main.tsx
+15:50:33 [vite] (client) hmr update /src/styles.css, /src/pages/HomePage.tsx, /src/pages/CompanionPage.tsx
+15:51:34 [vite] (client) hmr update /src/styles.css, /src/pages/CompanionPage.tsx
+15:51:34 [vite] (client) hmr update /src/styles.css, /src/components/TamagotchiCompanion.tsx
+15:51:34 [vite] (client) hmr update /src/pages/CompanionPage.tsx, /src/styles.css
+15:51:34 [vite] (client) hmr update /src/companion.css
+15:52:56 [vite] (client) hmr update /src/styles.css, /src/pages/CompanionPage.tsx

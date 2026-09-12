@@ -1,0 +1,14 @@
+$ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-env.ps1
+$ tauri dev
+     Running BeforeDevCommand (`pnpm dev:web`)
+$ vite --host 127.0.0.1 --port 1420
+     Running DevCommand (`cargo  run --no-default-features --color always --`)
+        Info Watching C:\Users\mathe\projetos\projects\Kairon\apps\desktop\src-tauri for changes...
+[1m[92m   Compiling[0m kairon v0.1.0 (C:\Users\mathe\projetos\projects\Kairon\apps\desktop\src-tauri)
+[1m[96m    Building[0m [=======================> ] 357/360: kairon(…[1m[96m    Building[0m [=======================> ] 358/360: kairon                                                              [1m[93mwarning[0m[1m[97m: linker stdout: Criando biblioteca C:\Users\mathe\projetos\projects\Kairon\apps\desktop\src-tauri\target\debug\deps\kairon_lib.dll.lib e objeto C:\Users\mathe\projetos\projects\Kairon\apps\desktop\src-tauri\target\debug\deps\kairon_lib.dll.exp[0m
+  [1m[96m|[0m
+  [1m[96m= [0m[1m[97mnote[0m: `#[warn(linker_messages)]` on by default
+
+[1m[96m    Building[0m [=======================> ] 358/360: kairon                                                              [1m[93mwarning[0m: `kairon` (lib) generated 1 warning
+[1m[96m    Building[0m [=======================> ] 359/360: kairon(…                                                            [1m[92m    Finished[0m `dev` profile [unoptimized + debuginfo] target(s) in 17.07s
+[1m[92m     Running[0m `target\debug\kairon.exe`
