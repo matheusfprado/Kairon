@@ -3,6 +3,8 @@ import json
 import re
 import shutil
 import subprocess
+import os
+import sys
 import time
 from collections.abc import Callable
 from dataclasses import dataclass
@@ -273,14 +275,22 @@ class SpotifyController:
 
     @staticmethod
     def _find_cli() -> str | None:
-        discovered = shutil.which("spotify_cli.exe")
+        discovered = shutil.which("spotify_cli.exe") or shutil.which("spotify_cli")
         if discovered:
             return discovered
+        if os.name != "nt":
+            return None
         alias = Path.home() / "AppData" / "Local" / "Microsoft" / "WindowsApps" / "spotify_cli.exe"
         return str(alias) if alias.exists() else None
 
     @staticmethod
     def _launch_spotify_app() -> None:
+        if sys.platform == "darwin":
+            subprocess.Popen(("open", "-a", "Spotify"), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            return
+        if os.name != "nt":
+            subprocess.Popen(("spotify",), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            return
         spotify = Path.home() / "AppData" / "Local" / "Microsoft" / "WindowsApps" / "Spotify.exe"
         subprocess.Popen(
             (str(spotify),),
@@ -290,6 +300,8 @@ class SpotifyController:
 
     @staticmethod
     def _send_media_key(virtual_key: int, presses: int) -> None:
+        if os.name != "nt":
+            raise OSError("Controles de mídia por tecla ainda não estão disponíveis neste sistema.")
         user32 = ctypes.windll.user32
         for _ in range(presses):
             user32.keybd_event(virtual_key, 0, 0, 0)

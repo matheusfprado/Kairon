@@ -12,8 +12,9 @@ struct CoreProcess(Mutex<Option<Child>>);
 
 fn find_project_root(start: &Path) -> Option<PathBuf> {
     start.ancestors().find_map(|directory| {
-        let python = directory.join(".venv").join("Scripts").join("python.exe");
-        python.exists().then(|| directory.to_path_buf())
+        let windows_python = directory.join(".venv").join("Scripts").join("python.exe");
+        let unix_python = directory.join(".venv").join("bin").join("python");
+        (windows_python.exists() || unix_python.exists()).then(|| directory.to_path_buf())
     })
 }
 
@@ -25,10 +26,11 @@ fn spawn_core() -> std::io::Result<Child> {
             "Kairon project root not found",
         )
     })?;
-    let python = project_root
-        .join(".venv")
-        .join("Scripts")
-        .join("python.exe");
+    let python = if cfg!(target_os = "windows") {
+        project_root.join(".venv").join("Scripts").join("python.exe")
+    } else {
+        project_root.join(".venv").join("bin").join("python")
+    };
 
     let mut command = Command::new(python);
     command

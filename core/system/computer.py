@@ -3,6 +3,7 @@ import logging
 import os
 import re
 import subprocess
+import sys
 import webbrowser
 from collections.abc import Callable
 from dataclasses import dataclass
@@ -227,6 +228,9 @@ class ComputerController:
     def _start_apps(cls) -> AppCatalog:
         if cls._cached_start_apps is not None:
             return cls._cached_start_apps
+        if os.name != "nt":
+            cls._cached_start_apps = {}
+            return cls._cached_start_apps
         command = (
             "[Console]::OutputEncoding=[Text.Encoding]::UTF8; "
             "Get-StartApps | Select-Object Name,AppID | ConvertTo-Json -Compress"
@@ -254,10 +258,23 @@ class ComputerController:
 
     @staticmethod
     def _launch_process(command: tuple[str, ...]) -> None:
+        if sys.platform == "darwin":
+            mac_apps = {
+                "notepad.exe": "TextEdit",
+                "calc.exe": "Calculator",
+                "explorer.exe": "Finder",
+            }
+            app = mac_apps.get(command[0].casefold())
+            if app:
+                subprocess.Popen(("open", "-a", app), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                return
         subprocess.Popen(command, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
     @staticmethod
     def _launch_start_app(app_id: str) -> None:
+        if os.name != "nt":
+            subprocess.Popen((app_id,), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            return
         subprocess.Popen(
             ("explorer.exe", f"shell:AppsFolder\\{app_id}"),
             stdout=subprocess.DEVNULL,
@@ -266,6 +283,9 @@ class ComputerController:
 
     @staticmethod
     def _open_path(path: str) -> None:
-        if not hasattr(os, "startfile"):
-            raise OSError("Abertura de pastas esta disponivel apenas no Windows.")
-        os.startfile(path)
+        if hasattr(os, "startfile"):
+            os.startfile(path)
+        elif sys.platform == "darwin":
+            subprocess.Popen(("open", path), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        else:
+            subprocess.Popen(("xdg-open", path), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)

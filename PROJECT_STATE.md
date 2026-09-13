@@ -102,3 +102,5 @@ type TamagotchiState = {
   Ollama generates the answer, and Edge neural TTS speaks it with Windows offline fallback.
 - The companion UI has no text composer, audio enable button, or response bubble.
 - OpenAI Realtime integration is not part of the active product flow; Ollama is the only LLM provider.
+- Cross-platform startup is supported on Windows and macOS through the Node-based scripts;
+  Windows-only TTS and system controls are used only when running on Windows.

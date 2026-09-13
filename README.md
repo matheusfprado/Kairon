@@ -1,6 +1,6 @@
 # Kairon
 
-Assistente pessoal local para Windows, voice-first, com desktop em Tauri/React e core em Python/FastAPI.
+Assistente pessoal local para Windows e macOS, voice-first, com desktop em Tauri/React e core em Python/FastAPI.
 
 ## Status
 
@@ -11,7 +11,7 @@ Fundacao do MVP:
 - Voz: microfone real com Whisper local e voz neural brasileira.
 - Interface: nucleo 3D reativo em Three.js com layout operacional responsivo.
 - Wake word: deteccao local de "Kairon" via Whisper, separada da futura integracao Porcupine.
-- TTS: voz neural masculina pt-BR-AntonioNeural, com fallback offline do Windows.
+- TTS: voz neural masculina pt-BR-AntonioNeural; fallback offline nativo no Windows.
 - Pesquisa: consulta automatica na web para pedidos explicitos e informacoes atuais, com fontes.
 - Conhecimento: indexacao local de PDF, TXT e Markdown com recuperacao semantica e fontes.
 - Computador: abre por voz aplicativos registrados no Menu Iniciar, pastas e sites permitidos.
@@ -24,11 +24,12 @@ Python e Rust precisam estar instalados para executar tudo localmente.
 
 ## Pre-requisitos
 
-```powershell
+```bash
 node --version
 pnpm --version
 python --version
 rustc --version
+ollama --version
 ```
 
 Instale o que faltar:
@@ -37,6 +38,10 @@ Instale o que faltar:
 winget install Python.Python.3.12
 winget install Rustlang.Rustup
 ```
+
+No macOS, instale Node.js, Python 3.12, Rust e Ollama pelos instaladores oficiais
+ou pelo Homebrew. Os mesmos comandos `pnpm install`, `pnpm setup:python` e `pnpm dev`
+funcionam depois disso.
 
 Depois feche e abra o terminal.
 

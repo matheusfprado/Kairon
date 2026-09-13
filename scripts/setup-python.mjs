@@ -1,0 +1,12 @@
+import { spawnSync } from "node:child_process";
+import { existsSync } from "node:fs";
+import path from "node:path";
+const root = process.cwd();
+const python = process.platform === "win32" ? "python" : "python3";
+const venvPython = process.platform === "win32" ? path.join(root, ".venv", "Scripts", "python.exe") : path.join(root, ".venv", "bin", "python");
+const run = (args) => { const r = spawnSync(python, args, { stdio: "inherit" }); if (r.status !== 0) process.exit(r.status ?? 1); };
+if (!existsSync(path.join(root, ".venv"))) run(["-m", "venv", ".venv"]);
+const pip = (args) => { const r = spawnSync(venvPython, ["-m", "pip", ...args], { stdio: "inherit" }); if (r.status !== 0) process.exit(r.status ?? 1); };
+pip(["install", "--upgrade", "pip"]);
+pip(["install", "-e", ".[dev]"]);
+console.log("Ambiente Python pronto. Instale/inicie o Ollama e rode pnpm dev.");

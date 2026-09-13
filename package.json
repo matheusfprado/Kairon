@@ -4,16 +4,16 @@
   "version": "0.1.0",
   "packageManager": "pnpm@11.2.2",
   "scripts": {
-    "check:env": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-env.ps1",
-    "setup:python": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/setup-python.ps1",
-    "dev": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/dev.ps1",
+    "check:env": "node scripts/check-env.mjs",
+    "setup:python": "node scripts/setup-python.mjs",
+    "dev": "node scripts/dev.mjs",
     "dev:web": "pnpm --filter @kairon/desktop dev:web",
-    "dev:core": ".\\.venv\\Scripts\\python.exe -m uvicorn core.main:app --reload --host 127.0.0.1 --port 8765",
-    "knowledge:index": ".\\.venv\\Scripts\\python.exe -m core.knowledge.cli",
-    "knowledge:reindex": ".\\.venv\\Scripts\\python.exe -m core.knowledge.cli --force",
+    "dev:core": "node scripts/run-python.mjs -m uvicorn core.main:app --reload --host 127.0.0.1 --port 8765",
+    "knowledge:index": "node scripts/run-python.mjs -m core.knowledge.cli",
+    "knowledge:reindex": "node scripts/run-python.mjs -m core.knowledge.cli --force",
     "lint": "pnpm --filter @kairon/desktop lint",
     "typecheck": "pnpm --filter @kairon/desktop typecheck",
     "build": "pnpm --filter @kairon/desktop build",
-    "test": ".\\.venv\\Scripts\\python.exe -m pytest"
+    "test": "node scripts/run-python.mjs -m pytest"
   }
 }

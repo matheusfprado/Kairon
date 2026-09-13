@@ -1,4 +1,5 @@
 import asyncio
+import sys
 from contextlib import asynccontextmanager
 from pathlib import Path
 
@@ -69,18 +70,14 @@ kairon_core = KaironCore(
     memory_repository=memory_repository,
     knowledge_base=knowledge_base,
 )
-windows_tts = WindowsTextToSpeechProvider()
-tts = (
-    EdgeNeuralTextToSpeechProvider(
+windows_tts = WindowsTextToSpeechProvider() if sys.platform == "win32" else None
+tts = EdgeNeuralTextToSpeechProvider(
         voice=settings.tts_voice,
         rate=settings.tts_rate,
         pitch=settings.tts_pitch,
         fallback=windows_tts,
         output_device=settings.audio_output_device,
-    )
-    if settings.tts_provider == "edge"
-    else windows_tts
-)
+    ) if settings.tts_provider == "edge" or windows_tts is None else windows_tts
 stt = FasterWhisperSpeechToTextProvider(
     model_name=settings.stt_model,
     language=settings.stt_language,
